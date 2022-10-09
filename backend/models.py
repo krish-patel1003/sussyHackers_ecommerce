@@ -1,3 +1,4 @@
+from email.policy import default
 from django.db import models
 
 from django.contrib.auth.models import PermissionsMixin
@@ -5,9 +6,6 @@ from django.contrib.auth.base_user import AbstractBaseUser
 from django.utils.translation import gettext_lazy as _
 
 from .managers import UserManager
-
-# third party imports
-
 
 # Create your models here.
 
@@ -56,7 +54,14 @@ class Product(models.Model):
 
 class Cart(models.Model):
     user = models.OneToOneField(User, on_delete = models.CASCADE)
-    products = models.ManyToManyField(Product, related_name="products")
 
     def __str__(self):
-        return f"{self.user} + {self.products}"
+        return f"{self.user}'s cart"
+
+class CartItem(models.Model):
+    cart = models.ForeignKey(Cart, on_delete = models.CASCADE)
+    product = models.ForeignKey(Product, on_delete = models.CASCADE)
+    quantity = models.IntegerField(default=1)
+
+    def __str__(self):
+        return f"{self.cart}: {self.product}"

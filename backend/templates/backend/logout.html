@@ -1,0 +1,8 @@
+{% extends "backend/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<br>
+<div class="container">
+    <p class="info">You have been logged out. Want to <a href="{% url 'login' %}">Login</a> again? </p>
+</div>
+{% endblock content %}
