@@ -41,6 +41,8 @@ INSTALLED_APPS = [
 
     'backend',
     'crispy_forms',
+    'django_filters',
+
 ]
 
 MIDDLEWARE = [

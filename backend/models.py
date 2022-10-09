@@ -34,7 +34,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
 
 class Category(models.Model):
-    category_name = models.CharField(_("category name"), max_length = 255)
+    name = models.CharField(_("category name"), max_length = 255)
 
     def __str__(self):
         return f"{self.category_name}"
@@ -46,7 +46,7 @@ class Product(models.Model):
     product_desc = models.TextField(_("product description"))
     product_price = models.DecimalField(_("product price"), decimal_places = 2, max_digits=8)
     product_brand = models.CharField(_("product brand"), max_length = 255)
-    prodcut_category = models.ForeignKey(Category, on_delete = models.CASCADE)
+    product_category = models.ForeignKey(Category, on_delete = models.CASCADE)
 
     def __str__(self) -> str:
         return f"{self.id}: {self.product_name}"

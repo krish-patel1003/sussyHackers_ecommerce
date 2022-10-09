@@ -1,0 +1,7 @@
+{% extends 'backend/base.html' %}
+{% block content %}
+<h1>Demo</h1>
+{% for data in filter_data.qs %}
+    <h1>{{data.product_name}} {{data.product_brand}} {{data.product_category}}</h1>
+{% endfor%}
+{% endblock content%}
